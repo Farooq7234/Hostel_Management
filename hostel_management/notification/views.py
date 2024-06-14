@@ -38,22 +38,22 @@ def is_admin(user):
     return user.groups.filter(name="admin").exists()
 
 
-
 def student_dashboard(request):
     try: 
         if request.user.is_authenticated:
             student = Student.objects.get(reg_no=request.user)
             total_days = Attendance.objects.filter(reg_no__reg_no=request.user).count()
             present_days = Attendance.objects.filter(reg_no__reg_no=request.user, present=True).count()
-            absent_days=Attendance.objects.filter(reg_no__reg_no=request.user, present=False).count()
-            reduction_days =max(0, (absent_days - 6))
+            absent_days = Attendance.objects.filter(reg_no__reg_no=request.user, present=False).count()
+            reduction_days = max(0, (absent_days - 6))
 
             last_month_expenditures = Expenditure.objects.filter(date__month=datetime.now().month-1)
-            total_expenditure = sum(exp.total_expenditure() for exp in last_month_expenditures)
+            total_expenditure = sum(exp.total_expenditure for exp in last_month_expenditures)
             students_count = Student.objects.count()
             per_day = total_expenditure / students_count if students_count > 0 else 0
-            mess_bill=present_days*per_day
+            mess_bill = present_days * per_day
             bill_summary = Bill.objects.filter(reg_no__reg_no=request.user)
+
             context = {
                 'student': student,
                 'total_days': total_days,

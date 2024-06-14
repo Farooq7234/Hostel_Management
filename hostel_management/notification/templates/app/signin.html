@@ -1,0 +1,39 @@
+ {% extends 'app/layout/main.html' %}
+
+{% block content %}
+
+   
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Sign In </h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="" class="form-label">UserName</label>
+                            <input type="text" class="form-control" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <button class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% include 'app/component/msg.html' %}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a style="text-decoration:none;padding:20px;font-size:25px;" href="#">Hostel Management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        {% if is_student %}
+            <a class="nav-link" href="{% url 'student_dashboard' %}">Dashboard</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
+        {% endif %}
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'help' %}">Help</a>
+      </li>
+    </ul>
+    {% if user.is_authenticated %}
+     <span style="padding:20px;"> <a href="{% url 'signout' %}" class="btn btn-danger">Logout</a></span>
+    {% else %}
+    <span style="padding:20px;"> <a class="btn btn-primary" href="{% url 'signin' %}">Sigin In</a> </span>
+    {% endif %}
+  </div>
+</nav>

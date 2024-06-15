@@ -1,5 +1,3 @@
-<<<<<<< HEAD:hostel_management/hostel_management/settings.py
-=======
 """
 Django settings for hotel_management project.
 
@@ -12,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 
 """
->>>>>>> parent of a652926 (rename to hostel_management):hostel_management/hotel_management/settings.py
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -69,12 +66,7 @@ TEMPLATES = [
     },
 ]
 
-<<<<<<< HEAD:hostel_management/hostel_management/settings.py
-WSGI_APPLICATION = 'hostel_management.wsgi.application'
-
-=======
 WSGI_APPLICATION = 'hotel_management.wsgi.application'
->>>>>>> parent of a652926 (rename to hostel_management):hostel_management/hotel_management/settings.py
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 

@@ -7,7 +7,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "hotel_managemenet/wsgi.py"
+            "dest": "hostel_managemenet/wsgi.py"
         }
     ]
 }

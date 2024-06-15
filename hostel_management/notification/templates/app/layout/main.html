@@ -9,10 +9,24 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+    .footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 20px;
+    }
+</style>
 <body>
     {% include 'app/component/navbar.html' %}
     {% block content %}
+    {% include 'app/component/footer.html' %}
     {% endblock %}
+    <footer class="footer">
+        &copy; 2024 TPGIT Hostel Management. All rights reserved.
+    </footer>
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/indexForm.js' %}"></script>

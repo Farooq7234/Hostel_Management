@@ -1,32 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar {
+            background: linear-gradient(45deg, #6db3f2, #1e69de);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-size: 4vmin;
+            color: #fff !important;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #fff !important;
+            font-size: 18px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+        .btn-primary, .btn-danger {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+        .btn-primary {
+            background-color: #ffdd57;
+            border: none;
+            color: #1e69de;
+        }
+        .btn-primary:hover {
+            background-color: #ffcc00;
+        }
+        .btn-danger {
+            background-color: #ff4d4d;
+            border: none;
+        }
+        .btn-danger:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+    <title>TPGIT Hostel Management</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">TPGIT Hostel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    {% if is_student %}
+                        <a class="nav-link" href="{% url 'student_dashboard' %}">Dashboard</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'help' %}">Help</a>
+                </li>
+            </ul>
+            {% if user.is_authenticated %}
+                <span style="padding: 10px;">
+                    <a href="{% url 'signout' %}" class="btn btn-danger">Logout</a>
+                </span>
+            {% else %}
+                <span style="padding: 10px;">
+                    <a class="btn btn-primary" href="{% url 'signin' %}">Sign In</a>
+                </span>
+            {% endif %}
+        </div>
+    </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a style="text-decoration:none;padding:20px;font-size:25px;" href="#">Hostel Management</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        {% if is_student %}
-            <a class="nav-link" href="{% url 'student_dashboard' %}">Dashboard</a>
-        {% else %}
-            <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
-        {% endif %}
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'help' %}">Help</a>
-      </li>
-    </ul>
-    {% if user.is_authenticated %}
-     <span style="padding:20px;"> <a href="{% url 'signout' %}" class="btn btn-danger">Logout</a></span>
-    {% else %}
-    <span style="padding:20px;"> <a class="btn btn-primary" href="{% url 'signin' %}">Sigin In</a> </span>
-    {% endif %}
-  </div>
-</nav>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

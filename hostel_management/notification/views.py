@@ -105,7 +105,7 @@ def signin(request):
                 return redirect('superuser')
             return redirect("home")
         else:
-            messages.error(request, "login faild")
+            messages.error(request, "login failed")
             return redirect("signin")
     return render(request, "app/signin.html")
 

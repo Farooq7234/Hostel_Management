@@ -2,15 +2,65 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h5 class="display-4" style="font-weight:bold;">Contact</h5>
-        <p class="lead" style="font-size:30px;">
-            <span>0416-2266101</span><br>
-            <span>0416-2264991</span><br>
-
-            
-            <span>hostel complaints:</span><br>
-            <span>complainthostel@gmail.com</span><br>
-        </p>
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="display-4 font-weight-bold mb-4">Contact</h1>
+                <p class="lead contact-info mb-4">
+                    <span class="d-block">0416-2266101</span>
+                    <span class="d-block">0416-2264991</span>
+                </p>
+                <p class="lead contact-info">
+                    <span class="font-weight-bold d-block">Hostel Complaints:</span>
+                    <a href="mailto:complainthostel@gmail.com" class="email-link">complainthostel@gmail.com</a>
+                </p>
+            </div>
+        </div>
     </div>
     
+    <style>
+        .contact-info span, .contact-info a {
+            display: block;
+            margin: 10px 0;
+        }
+        .email-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .email-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 576px) {
+            .lead {
+                font-size: 1.1em;
+            }
+            .display-4 {
+                font-size: 2.5em;
+            }
+        }
+        @media (min-width: 577px) and (max-width: 768px) {
+            .lead {
+                font-size: 1.25em;
+            }
+            .display-4 {
+                font-size: 3em;
+            }
+        }
+        @media (min-width: 769px) and (max-width: 992px) {
+            .lead {
+                font-size: 1.5em;
+            }
+            .display-4 {
+                font-size: 3.5em;
+            }
+        }
+        @media (min-width: 993px) {
+            .lead {
+                font-size: 1.75em;
+            }
+            .display-4 {
+                font-size: 4em;
+            }
+        }
+    </style>
 {% endblock %}

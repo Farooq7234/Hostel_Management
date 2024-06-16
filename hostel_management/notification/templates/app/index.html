@@ -1,43 +1,213 @@
 {% extends 'app/layout/main.html' %}
 
 {% block content %}
-  {% include 'app/component/msg.html' %}
+{% load static %}
+<style>
+  .hero__section {
+    padding: 20px 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("{% static 'images/Boys-Hostel-BFI-u6qR.jpg' %}");
+    min-height: 80vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
 
-  <style>
-    .text-responsive {
-      font-size: calc(1rem + 1vw);
-      font-weight: 500;
-    }
-    .card-content {
-      font-size: calc(0.9rem + 0.5vw);
-    }
-    
-  </style>
+  .hero__section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adjust the color and opacity to dim the background */
+    z-index: 1;
+  }
+
+  .hero__card {
+    position: relative;
+    z-index: 2;
+    gap:10px ;
+    background-color: #2e279d;
+    padding:20px 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border-radius: 20px;
+  }
+
+  .about__section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    background-color: #6d21a9;
+    color: white;
+  }
+
+  .about__section h5 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .hostel__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #059669;
+    width: 350px;
+    min-height: 250px;
+  }
+
   
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col">
-        <h1 class="display-4 text-center text-responsive">Welcome to TPGIT Hostel Management</h1>
+
+  .hostel__images{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+  }
+
+  .facilities{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .facility__card {
+    width: 350px;
+    background-color: #004aad;
+    padding:40px 20px;
+    border-radius: 10px;
+    min-height: 200px;
+  }
+
+  .facility__card h5{
+    text-align: start;
+  }
+
+  @media (max-width:500px) {
+    .hero__card {
+      width: 90%;
+    }
+
+    .hero__card h3 {
+      font-size: 20px;
+    }
+
+    .hero__card p {
+      font-size: 14px;
+    }
+
+
+  }
+</style>
+
+<div class="home__container">
+  <!-- HERO SECTION -->
+  <div class="hero__section">
+    <div class="hero__card">
+      <h5>HOSTEL MESS BILL MANAGEMENT SYSTEM</h5>
+      <p> <strong>"HOME AWAY FROM HOME".</strong> The aim of running hostel to provide a homely environment for the student. They have
+        been designed to provide a Comfortable, Safe and Secure living. The hostel is managed by the hostel Residents,
+        Chief warden, Warden, Manager, Deputy Warden and Student Representatives.</p>
+    </div>
+  </div>
+  <!-- ABOUT SECTION -->
+  <div class="about__section">
+    <h3 style="text-align:center;">About TPGIT Hostel</h3>
+    <h5 style="text-align:center;">Boys Hostel</h5>
+    <div class="hostel__content">
+      <div class="cards">
+        <img class="hostel__images" src="{% static 'images/B1.png' %}" alt="">
+        <h5>B1 Hostel</h5>
+        <p>Welcome to B1 Hostel.The B1 Hostel offers accommodation for approximately 210 members within the college
+          hostel premises, providing comfortable living spaces for male students.</p>
+      </div>
+      <div class="cards">
+        <img class="hostel__images" src="{% static 'images/B2.jpeg' %}" alt="">
+        <h5>B2 Hostel</h5>
+        <p>With space for approximately 165 members,the B2 Hostel provides accomodation within the college hostel,ensuring a convenient living environment for male students.</p>
+      </div>
+      <div class="cards">
+        <img class="hostel__images" src="{% static 'images/B3.jpeg' %}" alt="">
+        <h5>B3 Hostel</h5>
+        <p>Hosting around 100-500 members,the B3 Hostel serves as a comfortable residence for male students,totallly offers accommodation for approximately 120 students in Boy‘s Hostel contributing to a vibrant living community.</p>
       </div>
     </div>
-
-    <div class="row mt-5">
-      <div class="col-md-8 offset-md-2">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title text-center">HOME AWAY FROM HOME</h2>
-            <p class="card-text card-content">
-              The aim of running the hostel is to provide a homely environment for the students. 
-              They have been designed to provide a Comfortable, Safe, and Secure living. 
-              The hostel is managed by the hostel Residents, Chief Warden, Warden, Manager, 
-              Deputy Warden, and Student Representatives.
-            </p>
-          </div>
-        </div>
+    <h3 style="text-align: center;">Girls Hostel</h3>
+    <div class="hostel__content">
+      <div class="cards">
+        <img class="hostel__images" src="{% static 'images/G1.jpeg' %}" alt="">
+        <h5>G1 Hostel</h5>
+        <p>Designed to accommodate approximately 152 members, the G1 Hostel provides comfortable living arrangements for female students, fostering a supportive environment within the college premises.</p>
+      </div>
+      <div class="cards">
+        <img class="hostel__images" src="{% static 'images/G2.jpeg' %}" alt="">
+        <h5>G2 Hostel</h5>
+        <p>Offering accommodation for approximately 180 members, the G2 Hostel serves as a residence for female students within the college campus, totally offers accommodation for approximately 1000 students.</p>
+      </div>
+    </div>
+    <h3 style="text-align: center;">Facilities</h3>
+    <div class="facilities">
+      <div class="facility__card">
+        <h5>Water Facility</h5>
+        <p>24/7 access to clean and hygienic water.</p>
+      </div>
+      <div class="facility__card">
+        <h5>Newspaper and Magazines</h5>
+        <p>Subscribed newspapers and magazines for students' reading pleasure.</p>
+      </div>
+      <div class="facility__card">
+        <h5>Mini-Gym</h5>
+        <p>Fitness equipment available for students use.</p>
+      </div>
+      <div class="facility__card">
+        <h5>TV Facility</h5>
+        <p>TVs for entertainment purpose</p>
+      </div>
+      <div class="facility__card">
+        <h5>Sports Kit</h5>
+        <p>Take advantage of our top-notch sports facilities for various athletic activities</p>
+      </div>
+      <div class="facility__card">
+        <h5>Separate Cot, Table, and Chair</h5>
+        <p>Individual furniture provided for each students comfort and study areas with comfortable furniture for focused learning and collaboration.</p>
+      </div>
+      <div class="facility__card">
+        <h5>STD Booth</h5>
+        <p>Booths available for student's private phone calls.</p>
+      </div>
+      <div class="facility__card">
+        <h5>Browsing Center</h5>
+        <p>Computer terminals with internet access for browsin</p>
+      </div>
+      <div class="facility__card">
+        <h5>First Aid</h5>
+        <p>First-Aid is available to treat injuries.</p>
       </div>
     </div>
   </div>
-
-
+</div>
 
 {% endblock %}

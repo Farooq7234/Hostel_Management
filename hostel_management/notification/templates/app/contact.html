@@ -2,33 +2,50 @@
 
 {% block content %}
     <div class="container mt-5">
-        <div class="row">
-            <div class="col text-center">
-                <h1 class="display-4 font-weight-bold mb-4">Contact</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 font-weight-bold mb-4">Contact Us</h1>
                 <p class="lead contact-info mb-4">
-                    <span class="d-block">0416-2266101</span>
-                    <span class="d-block">0416-2264991</span>
+                    <span class="d-block"><i class="fas fa-phone-alt"></i> 0416-2266101</span>
+                    <span class="d-block"><i class="fas fa-phone-alt"></i> 0416-2264991</span>
                 </p>
                 <p class="lead contact-info">
                     <span class="font-weight-bold d-block">Hostel Complaints:</span>
-                    <a href="mailto:complainthostel@gmail.com" class="email-link">complainthostel@gmail.com</a>
+                    <a href="mailto:complainthostel@gmail.com" class="email-link"><i class="fas fa-envelope"></i> complainthostel@gmail.com</a>
                 </p>
             </div>
         </div>
     </div>
-    
+
     <style>
+        .container {
+            background: #f7f9fc;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
         .contact-info span, .contact-info a {
             display: block;
             margin: 10px 0;
+            font-size: 1.25em;
+            color: #333;
         }
         .email-link {
             color: #007bff;
             text-decoration: none;
             font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .email-link i {
+            margin-right: 10px;
         }
         .email-link:hover {
             text-decoration: underline;
+        }
+        h1.display-4 {
+            color: #343a40;
         }
         @media (max-width: 576px) {
             .lead {
@@ -36,6 +53,9 @@
             }
             .display-4 {
                 font-size: 2.5em;
+            }
+            .container {
+                padding: 20px;
             }
         }
         @media (min-width: 577px) and (max-width: 768px) {
@@ -45,6 +65,9 @@
             .display-4 {
                 font-size: 3em;
             }
+            .container {
+                padding: 30px;
+            }
         }
         @media (min-width: 769px) and (max-width: 992px) {
             .lead {
@@ -53,6 +76,9 @@
             .display-4 {
                 font-size: 3.5em;
             }
+            .container {
+                padding: 40px;
+            }
         }
         @media (min-width: 993px) {
             .lead {
@@ -60,6 +86,9 @@
             }
             .display-4 {
                 font-size: 4em;
+            }
+            .container {
+                padding: 50px;
             }
         }
     </style>

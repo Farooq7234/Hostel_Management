@@ -1,0 +1,169 @@
+{% extends 'app/layout/main.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+  :root {
+    --primary-bg-color: #6d21a9;
+    --secondary-bg-color: #059669;
+    --tertiary-bg-color: #004aad;
+    --card-width: 350px;
+    --card-min-height: 250px;
+    --facility-card-min-height: 200px;
+  }
+
+  body {
+    background-color: #f3f4f6;
+  }
+
+  .about__section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+    background: linear-gradient(135deg, #6d21a9, #4b0082);
+    color: white;
+  }
+
+  .about__section h3,
+  .about__section h5 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .hostel__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #059669, #007f5f);
+    width: var(--card-width);
+    min-height: var(--card-min-height);
+    color: white;
+    text-align: center;
+  }
+
+  .hostel__images {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .facilities {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .facility__card {
+    width: var(--card-width);
+    background: linear-gradient(135deg, #004aad, #002a6f);
+    padding: 40px 20px;
+    border-radius: 10px;
+    min-height: var(--facility-card-min-height);
+    color: white;
+  }
+
+  .facility__card h5 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .facility__card p {
+    margin: 0;
+  }
+</style>
+
+<!-- ABOUT SECTION -->
+<div class="about__section">
+  <h3>About TPGIT Hostel</h3>
+  <h5>Boys Hostel</h5>
+  <div class="hostel__content">
+    <div class="cards">
+      <img class="hostel__images" src="{% static 'images/B1.png' %}" alt="B1 Hostel">
+      <h5>B1 Hostel</h5>
+      <p>Welcome to B1 Hostel. The B1 Hostel offers accommodation for approximately 210 members within the college hostel premises, providing comfortable living spaces for male students.</p>
+    </div>
+    <div class="cards">
+      <img class="hostel__images" src="{% static 'images/B2.jpeg' %}" alt="B2 Hostel">
+      <h5>B2 Hostel</h5>
+      <p>With space for approximately 165 members, the B2 Hostel provides accommodation within the college hostel, ensuring a convenient living environment for male students.</p>
+    </div>
+    <div class="cards">
+      <img class="hostel__images" src="{% static 'images/B3.jpeg' %}" alt="B3 Hostel">
+      <h5>B3 Hostel</h5>
+      <p>Hosting around 100-500 members, the B3 Hostel serves as a comfortable residence for male students, totally offers accommodation for approximately 120 students in Boy‘s Hostel contributing to a vibrant living community.</p>
+    </div>
+  </div>
+  <h3>Girls Hostel</h3>
+  <div class="hostel__content">
+    <div class="cards">
+      <img class="hostel__images" src="{% static 'images/G1.jpeg' %}" alt="G1 Hostel">
+      <h5>G1 Hostel</h5>
+      <p>Designed to accommodate approximately 152 members, the G1 Hostel provides comfortable living arrangements for female students, fostering a supportive environment within the college premises.</p>
+    </div>
+    <div class="cards">
+      <img class="hostel__images" src="{% static 'images/G2.jpeg' %}" alt="G2 Hostel">
+      <h5>G2 Hostel</h5>
+      <p>Offering accommodation for approximately 180 members, the G2 Hostel serves as a residence for female students within the college campus, totally offers accommodation for approximately 1000 students.</p>
+    </div>
+  </div>
+  <h3>Facilities</h3>
+  <div class="facilities">
+    <div class="facility__card">
+      <h5><i class="fas fa-water"></i> Water Facility</h5>
+      <p>24/7 access to clean and hygienic water.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-newspaper"></i> Newspaper and Magazines</h5>
+      <p>Subscribed newspapers and magazines for students' reading pleasure.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-dumbbell"></i> Mini-Gym</h5>
+      <p>Fitness equipment available for students use.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-tv"></i> TV Facility</h5>
+      <p>TVs for entertainment purposes.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-football-ball"></i> Sports Kit</h5>
+      <p>Take advantage of our top-notch sports facilities for various athletic activities.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-bed"></i> Separate Cot, Table, and Chair</h5>
+      <p>Individual furniture provided for each student's comfort and study areas with comfortable furniture for focused learning and collaboration.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-phone"></i> STD Booth</h5>
+      <p>Booths available for student's private phone calls.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-desktop"></i> Browsing Center</h5>
+      <p>Computer terminals with internet access for browsing.</p>
+    </div>
+    <div class="facility__card">
+      <h5><i class="fas fa-first-aid"></i> First Aid</h5>
+      <p>First-Aid is available to treat injuries.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

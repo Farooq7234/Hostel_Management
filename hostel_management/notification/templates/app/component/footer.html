@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Footer</title>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+        .footer-container {
+            background-color: #1f2937;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .footer-column {
+            flex: 1 1 100%;
+            max-width: 300px;
+        }
+        .footer-column h4 {
+            margin-bottom: 1rem;
+        }
+        .footer-column div {
+            margin-bottom: 1rem;
+        }
+        .footer-column p, .footer-column ul {
+            margin: 0;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-column .icon-text {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .footer-column .icon {
+            margin-top: 0.25rem;
+            font-size: 1.25rem;
+        }
+        .footer-bottom {
+            background-color: #374151;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            width: 100%;
+        }
+        @media(min-width: 768px) {
+            .footer-column {
+                flex: 1;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-container">
+        <div class="footer-column address">
+            <h4>Warden,</h4>
+            <div class="icon-text">
+                <i class="fas fa-location-arrow icon"></i>
+                <div>
+                    <p>TPGIT Hostels</p>
+                    <p>Thanthai Periyar Government Institute of Technology</p>
+                    <p>Bagayam</p>
+                    <p>Vellore - 632513</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column contact">
+            <h4>Contact</h4>
+            <div class="icon-text">
+                <i class="fas fa-phone icon"></i>
+                <div>
+                    <p>0416-2266101</p>
+                    <p>0416-2264991</p>
+                </div>
+            </div>
+            <div class="icon-text">
+                <i class="fas fa-envelope icon"></i>
+                <div>
+                    <p>Hostel Complaints :</p>
+                    <p>complainthostel@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 TPGIT</p>
+    </div>
+</body>
+</html>

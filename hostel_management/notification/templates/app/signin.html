@@ -1,39 +1,77 @@
- {% extends 'app/layout/main.html' %}
+{% extends 'app/layout/main.html' %}
 
 {% block content %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .sign-in-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .sign-in-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .sign-in-form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #343a40;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .msg-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 
-   
-    <section class="bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center">Sign In </h1>
+    <section class="sign-in-container">
+        <div class="sign-in-form">
+            <h1>Sign In</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
                 </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="msg-container">
+                {% include 'app/component/msg.html' %}
             </div>
         </div>
     </section>
-
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="" class="form-label">UserName</label>
-                            <input type="text" class="form-control" name="username">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Password</label>
-                            <input type="password" class="form-control" name="password">
-                        </div>
-                        <button class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    {% include 'app/component/msg.html' %}
-
 {% endblock %}

@@ -69,6 +69,9 @@
                     <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="nav-item">
                     {% if is_student %}
                     <a class="nav-link" href="{% url 'student_dashboard' %}">Dashboard</a>
                     {% else %}
@@ -76,11 +79,9 @@
                     {% endif %}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'help' %}">Help</a>
-                </li>
+               
             </ul>
             {% if user.is_authenticated %}
             <span style="padding: 10px;">

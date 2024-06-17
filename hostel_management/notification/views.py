@@ -28,8 +28,8 @@ def contact(request):
 def index(request):
     return render(request,"app/index.html")
 
-def help(request):
-    return render(request,"app/help.html")
+def about(request):
+    return render(request,"app/about.html")
 
 def is_student(user):
     return user.groups.filter(name="student").exists()

@@ -13,7 +13,7 @@ class Student(models.Model):
     hostel_name = models.CharField(max_length=100, choices=hos_name, blank=False, null=False)
     year_of_study = models.IntegerField()
     email = models.EmailField(max_length=70, blank=True, unique=True)
-    phone_number = models.CharField(max_length=15, blank=True)  # Add phone number field
+    phone_number = models.CharField(max_length=15, blank=True) 
 
     def __str__(self):
         return self.name

@@ -1,19 +1,19 @@
 from django.db import models
-from django.contrib.auth.forms import User
 
 # Create your models here.
 class Student(models.Model):
-    reg_no = models.CharField(max_length=50, unique=True,blank=False)
+    reg_no = models.CharField(max_length=50, unique=True, blank=False)
     name = models.CharField(max_length=100)
     room_no = models.CharField(max_length=10)
-    cours=[('B.E(UG)','B.E(UG)'),('M.E(PG)','M.E(PG)'),('MCA','MCA')]
-    course = models.CharField(max_length=100,choices=cours, blank=False, null=False)
-    DEPT=[("civil","civil"),("CSE", "CSE"), ("ECE", "ECE"), ("MECH", "MECH"),("EEE","EEE")]
-    branch = models.CharField(max_length=100,choices=DEPT, blank=False, null=False)
+    cours = [('B.E(UG)', 'B.E(UG)'), ('M.E(PG)', 'M.E(PG)'), ('MCA', 'MCA')]
+    course = models.CharField(max_length=100, choices=cours, blank=False, null=False)
+    DEPT = [("civil", "civil"), ("CSE", "CSE"), ("ECE", "ECE"), ("MECH", "MECH"), ("EEE", "EEE")]
+    branch = models.CharField(max_length=100, choices=DEPT, blank=False, null=False)
     hos_name = [('G1', 'G1'), ('G2', 'G2'), ('B1', 'B1'), ('B2', 'B2'), ('B3', 'B3')]
-    hostel_name=models.CharField(max_length=100,choices=hos_name, blank=False, null=False)
+    hostel_name = models.CharField(max_length=100, choices=hos_name, blank=False, null=False)
     year_of_study = models.IntegerField()
-    email  = models.EmailField(max_length=70,blank=True,unique=True)
+    email = models.EmailField(max_length=70, blank=True, unique=True)
+    phone_number = models.CharField(max_length=15, blank=True)  # Add phone number field
 
     def __str__(self):
         return self.name
@@ -44,5 +44,3 @@ class Expenditure(models.Model):
     @property
     def total_expenditure(self):
         return self.milk + self.gas + self.groceries + self.vegetables
-    
-

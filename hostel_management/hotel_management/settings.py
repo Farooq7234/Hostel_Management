@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 """
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -121,6 +126,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'tpgitmessbill@gmail.com'
 EMAIL_HOST_PASSWORD = 'vwgq mdvd otkz mdir'
 EMAIL_USE_SSL = False
+
+
+# Twilio configuration
+TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
+TWILIO_PHONE_NUMBER = os.getenv('TWILIO_PHONE_NUMBER')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -96,7 +96,7 @@ def signin(request):
         user = authenticate(request, username=u, password=p)
         if user is not None:
             login(request, user)
-            messages.success(request, "login sucess")
+            messages.success(request, "login success")
             if is_student(user):
                 return redirect('student_dashboard')
             elif is_admin(user):

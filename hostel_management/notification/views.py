@@ -26,8 +26,39 @@ def is_student(user):
 def is_admin(user):
     return user.groups.filter(name="admin").exists()
 
+# def student_dashboard(request):
+#     try:
+#         if request.user.is_authenticated:
+#             student = Student.objects.get(reg_no=request.user)
+#             total_days = Attendance.objects.filter(reg_no__reg_no=request.user).count()
+#             present_days = Attendance.objects.filter(reg_no__reg_no=request.user, present=True).count()
+#             absent_days = Attendance.objects.filter(reg_no__reg_no=request.user, present=False).count()
+#             reduction_days = max(0, (absent_days - 6))
+
+#             last_month_expenditures = Expenditure.objects.filter(date__month=datetime.now().month - 1)
+#             total_expenditure = sum(exp.total_expenditure for exp in last_month_expenditures)
+#             students_count = Student.objects.count()
+#             per_day = total_expenditure / students_count if students_count > 0 else 0
+#             mess_bill = present_days * per_day
+#             bill_summary = Bill.objects.filter(reg_no__reg_no=request.user)
+
+#             context = {
+#                 'student': student,
+#                 'total_days': total_days,
+#                 'present_days': present_days,
+#                 'reduction_days': reduction_days,
+#                 'mess_bill': mess_bill,
+#                 'bill_summary': bill_summary,
+#                 'last_date': '10/06/2024',
+#             }
+#             return render(request, 'app/student/student_dashboard.html', context)
+#         else:
+#             messages.error(request, "Login to access the page")
+#             return redirect('signin')
+#     except Student.DoesNotExist:
+#         return render(request, 'app/student/student_not_found.html')
 def student_dashboard(request):
-    try:
+    try: 
         if request.user.is_authenticated:
             student = Student.objects.get(reg_no=request.user)
             total_days = Attendance.objects.filter(reg_no__reg_no=request.user).count()
@@ -35,7 +66,7 @@ def student_dashboard(request):
             absent_days = Attendance.objects.filter(reg_no__reg_no=request.user, present=False).count()
             reduction_days = max(0, (absent_days - 6))
 
-            last_month_expenditures = Expenditure.objects.filter(date__month=datetime.now().month - 1)
+            last_month_expenditures = Expenditure.objects.filter(date__month=datetime.now().month-1)
             total_expenditure = sum(exp.total_expenditure for exp in last_month_expenditures)
             students_count = Student.objects.count()
             per_day = total_expenditure / students_count if students_count > 0 else 0
@@ -53,11 +84,11 @@ def student_dashboard(request):
             }
             return render(request, 'app/student/student_dashboard.html', context)
         else:
-            messages.error(request, "Login to access the page")
+            messages.error(request, "login to access the page")
             return redirect('signin')
     except Student.DoesNotExist:
         return render(request, 'app/student/student_not_found.html')
-
+    
 def admin_dashboard(request):
     if request.user.is_authenticated:
         students = Student.objects.all()

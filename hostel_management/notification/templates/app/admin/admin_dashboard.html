@@ -11,10 +11,9 @@
             <h2 class="mb-3">Send SMS</h2>
             <form method="post" action="{% url 'send_bulk_sms' %}">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea name="message" class="form-control" rows="3" required></textarea>
-                </div>
+                {% for student in students %}
+                <input type="hidden" name="message" value="Name: {{ student.name }}, Reg No: {{ student.reg_no }}, Bill: {{ student.bill }}">
+                {% endfor %}
                 <button type="submit" class="btn btn-primary btn-block">Send SMS to All</button>
             </form>
         </div>
@@ -50,6 +49,7 @@
                             <th>Hostel Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
+                            <th>Mess Bill</th>  <!-- Added column for Mess Bill -->
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -65,6 +65,7 @@
                             <td>{{ student.hostel_name }}</td>
                             <td>{{ student.email }}</td>
                             <td>{{ student.phone_number }}</td>
+                            <td>{{ student.bill|default:"0.00"|floatformat:"2" }}</td>
                             <td>
                                 <div class="d-flex">
                                     <a class="btn btn-success btn-sm me-1" href="{% url 'updateData' student.id %}">Update</a>

@@ -6,7 +6,10 @@ from .models import Student, Attendance, Expenditure, Bill
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import SMSSendForm
-from .utils import send_bulk_sms  # Assuming send_sms function is defined in utils.py
+from django.contrib.auth.decorators import login_required
+from .utils import send_bulk_sms 
+from decimal import Decimal, ROUND_HALF_UP
+
 
 def home(request):
     return render(request, "app/index.html")
@@ -89,17 +92,30 @@ def student_dashboard(request):
     except Student.DoesNotExist:
         return render(request, 'app/student/student_not_found.html')
     
+@login_required
+
 def admin_dashboard(request):
     if request.user.is_authenticated:
         students = Student.objects.all()
         expenditures = Expenditure.objects.all()
-        attendance = Attendance.objects.all()
+
+        # Calculate total expenditure
+        total_expenditure = sum(exp.total_expenditure for exp in expenditures)
+        students_count = Student.objects.count()
+        per_day_cost = Decimal(total_expenditure) / Decimal(students_count) if students_count > 0 else Decimal('0.00')
+
+        # Calculate mess bill for each student and add to student object
+        for student in students:
+            present_days = Attendance.objects.filter(reg_no=student, present=True).count()
+            mess_bill = Decimal(present_days) * per_day_cost
+            # Round to two decimal places
+            mess_bill = mess_bill.quantize(Decimal('0.00'), rounding=ROUND_HALF_UP)
+            student.bill = mess_bill  # Add mess_bill directly to student object
 
         context = {
             'students': students,
             'expenditures': expenditures,
-            'attendance': attendance,
-            'form': SMSSendForm(),  # Include the SMS form in the context
+            'form': SMSSendForm(),
         }
         return render(request, 'app/admin/admin_dashboard.html', context)
     else:
@@ -166,6 +182,8 @@ def updateData(request, id):
         hostel_name = request.POST['hostel_name']
         year_of_study = request.POST['year_of_study']
         email = request.POST['email']
+        phone_number = request.POST['phone_number']  # Capture phone_number from POST data
+
         newdata.reg_no = reg_no
         newdata.name = name
         newdata.room_no = room_no
@@ -174,6 +192,8 @@ def updateData(request, id):
         newdata.hostel_name = hostel_name
         newdata.year_of_study = year_of_study
         newdata.email = email
+        newdata.phone_number = phone_number  
+
         newdata.save()
         return redirect('admin_dashboard')
     return render(request, 'app/update.html', {'data': newdata})

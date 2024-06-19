@@ -1,70 +1,77 @@
 {% extends 'app/layout/main.html' %}
 
 {% block content %}
-
-
-    <section class="bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="text-center">Update</h1>
-                </div>
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Update</h1>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <form action="/updateData/{{data.id}}" method="POST">
-                        {% csrf_token %}
-            
-                        <div class="mb-3">
-                            <label for="" class="form-label">reg_no</label>
-                            <input type="number" class="form-control" name="reg_no">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">name</label>
-                            <input type="name" class="form-control" value={{data.name}} name="name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Room_no</label>
-                            <input type="number" value={{data.room_no}} class="form-control" name="room_no">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Course</label>
-                            <input type="varchar" class="form-control" value={{data.course}} name="course">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Branch</label>
-                            <input type="varchar" value={{data.branch}} class="form-control" name="branch">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Hostel_name</label>
-                            <input type="varchar" vale="{{data.year_of_study}}" class="form-control" name="hostel_name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Year_of_study</label>
-                            <input type="number" value="{{data.year_of_study}}" class="form-control" name="year_of_study">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Email</label>
-                            <input type="email" class="form-control" value='{{data.email}}' name="email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Phone</label>
-                            <input type="phone" class="form-control" value='{{data.phone_number}}' name="phone">
-                        </div>
-                        <div class="mb-3">
-                        <input class="btn btn-success btn-block" type=submit value="update" />
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <form action="/updateData/{{ data.id }}/" method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="reg_no" class="form-label">Registration Number</label>
+                        <input type="number" class="form-control" id="reg_no" name="reg_no" value="{{ data.reg_no }}" required>
                     </div>
-                    </form>
-                </div>
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ data.name }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="room_no" class="form-label">Room Number</label>
+                        <input type="number" class="form-control" id="room_no" name="room_no" value="{{ data.room_no }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="course" class="form-label">Course</label>
+                        <input type="text" class="form-control" id="course" name="course" value="{{ data.course }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="branch" class="form-label">Branch</label>
+                        <input type="text" class="form-control" id="branch" name="branch" value="{{ data.branch }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="hostel_name" class="form-label">Hostel Name</label>
+                        <input type="text" class="form-control" id="hostel_name" name="hostel_name" value="{{ data.hostel_name }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="year_of_study" class="form-label">Year of Study</label>
+                        <input type="number" class="form-control" id="year_of_study" name="year_of_study" value="{{ data.year_of_study }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{ data.phone_number }}" required>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-block">Update</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-    
-    {% include 'app/component/msg.html' %}
+    </div>
+</section>
+
+{% include 'app/component/msg.html' %}
 
 {% endblock %}

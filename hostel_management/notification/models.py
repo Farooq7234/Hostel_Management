@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Student(models.Model):
     reg_no = models.CharField(max_length=50, unique=True, blank=False)
     name = models.CharField(max_length=100)

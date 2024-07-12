@@ -11,9 +11,6 @@
             <h2 class="mb-3">Send SMS</h2>
             <form method="post" action="{% url 'send_bulk_sms' %}">
                 {% csrf_token %}
-                {% for student in students %}
-                <input type="hidden" name="message" value="Name: {{ student.name }}, Reg No: {{ student.reg_no }}, Bill: {{ student.bill }}">
-                {% endfor %}
                 <button type="submit" class="btn btn-primary btn-block">Send SMS to All</button>
             </form>
         </div>
@@ -49,7 +46,7 @@
                             <th>Hostel Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
-                            <th>Mess Bill</th>  <!-- Added column for Mess Bill -->
+                            <th>Mess Bill</th>
                             <th>Actions</th>
                         </tr>
                     </thead>

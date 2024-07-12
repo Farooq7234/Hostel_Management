@@ -6,9 +6,9 @@ from .models import Student, Attendance, Expenditure, Bill
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import SMSSendForm
-from django.contrib.auth.decorators import login_required
 from .utils import send_bulk_sms 
 from decimal import Decimal, ROUND_HALF_UP
+
 
 
 def home(request):
@@ -44,7 +44,9 @@ def student_dashboard(request):
             per_day = total_expenditure / students_count if students_count > 0 else 0
             mess_bill = present_days * per_day
             bill_summary = Bill.objects.filter(reg_no__reg_no=request.user)
-
+             # Format mess_bill to 2 decimal places
+            mess_bill = f"{mess_bill:.2f}"
+            print(f'this is from the student function {total_days}')
             context = {
                 'student': student,
                 'total_days': total_days,
@@ -78,6 +80,7 @@ def admin_dashboard(request):
             # Round to two decimal places
             mess_bill = mess_bill.quantize(Decimal('0.00'), rounding=ROUND_HALF_UP)
             student.bill = mess_bill  # Add mess_bill directly to student object
+
 
         context = {
             'students': students,
